@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria MundoCan - Veterinaria & SPA</title>
+    <style>
+        :root {
+            --primary: #4e8cff;
+            --secondary: #ff9e4a;
+            --accent: #6bcb77;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+            font-weight: 300;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234e8cff"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #ff8b32;
+            transform: translateY(-3px);
+        }
+        
+        /* Make Your Pet Friendly */
+        .pet-friendly {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Why Choose Us */
+        .why-us {
+            padding: 80px 0;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: var(--light);
+            transition: all 0.3s;
+        }
+        
+        .feature:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .feature:hover h3 {
+            color: white;
+        }
+        
+        .feature h3 {
+            margin: 20px 0;
+            color: var(--primary);
+        }
+        
+        /* Promotions */
+        .promotions {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .promo-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .promo-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .promo-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .promo-content {
+            padding: 25px;
+        }
+        
+        .promo-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .hours {
+            margin-top: 30px;
+        }
+        
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+        }
+        
+        .accordion {
+            margin-top: 40px;
+        }
+        
+        .accordion-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .accordion-header {
+            background-color: var(--light);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .accordion-content.active {
+            padding: 20px;
+            max-height: 300px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Mundo<span>Can</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#promociones">Promociones</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <h2>Veterinaria & SPA</h2>
+            <p>Desde 2010 brindando servicios de calidad con ética y responsabilidad para tus engreídos</p>
+            <a href="#contacto" class="btn">Agendar cita</a>
+        </div>
+    </section>
+
+    <!-- Make Your Pet Friendly -->
+    <section class="pet-friendly" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Make Your Pet Friendly</h2>
+                <p>Ofrecemos los mejores servicios para el cuidado integral de tu mascota</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Atención Médica</h3>
+                        <p>Servicio veterinario profesional para caninos y felinos con los más altos estándares de calidad.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Spa Canino</h3>
+                        <p>Baños terapéuticos, cortes de pelo y uñas, limpieza dental y más servicios de estética canina.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Farmacia Veterinaria</h3>
+                        <p>Medicamentos, antipulgas, vitaminas y todos los productos que tu mascota necesita.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Razones para confiar el cuidado de tu mascota a nuestro equipo profesional</p>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <h3>Experiencia</h3>
+                    <p>Más de 10 años brindando servicios veterinarios de calidad</p>
+                </div>
+                <div class="feature">
+                    <h3>Profesionalismo</h3>
+                    <p>Personal calificado y apasionado por el cuidado animal</p>
+                </div>
+                <div class="feature">
+                    <h3>Servicios Integrales</h3>
+                    <p>Desde consultas médicas hasta spa y productos premium</p>
+                </div>
+                <div class="feature">
+                    <h3>Precios Justos</h3>
+                    <p>Calidad premium a precios accesibles con promociones constantes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions -->
+    <section class="promotions" id="promociones">
+        <div class="container">
+            <div class="section-title">
+                <h2>Promociones Destacadas</h2>
+                <p>Aprovecha nuestras ofertas especiales para el cuidado de tu mascota</p>
+            </div>
+            <div class="promo-cards">
+                <div class="promo-card">
+                    <div class="promo-badge">25% DESCUENTO</div>
+                    <div class="promo-content">
+                        <h3>Barker & Natural Home</h3>
+                        <p>Por la compra de tu anti-pulgas favorito y/o baño de tu mascota reclama tu descuento</p>
+                        <p><strong>Barker:</strong> Desde S/ 15.00</p>
+                        <p><strong>Natural Home:</strong> Desde S/ 10.50</p>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <div class="promo-badge">PROMO</div>
+                    <div class="promo-content">
+                        <h3>Simparica</h3>
+                        <p>¡Desparasitación interna gratis por la compra de cualquier Simparica!</p>
+                        <p>Disponible en dos pesos: 2.5–5kg y 20–40kg</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ready to Transform -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ready to Transform Your Dog's Behavior?</h2>
+                <p>Ofrecemos asesoramiento especializado para el entrenamiento y cuidado behavioral de tu mascota</p>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <h3>Consejos Expertos</h3>
+                    <p>Recibe tips profesionales para el cuidado y entrenamiento de tu mascota</p>
+                </div>
+                <div class="feature">
+                    <h3>Socialización</h3>
+                    <p>Ayudamos a tu mascota a adaptarse a diferentes entornos y situaciones</p>
+                </div>
+                <div class="feature">
+                    <h3>Soluciones Personalizadas</h3>
+                    <p>Desarrollamos planes específicos según las necesidades de tu mascota</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contáctanos</h3>
+                    <p>Estamos aquí para responder todas tus preguntas y agendar citas para el cuidado de tu mascota.</p>
+                    
+                    <div class="contact-details">
+                        <p><i>📍</i> Av. Lima 1136 paradero 6 1/2 José Gálvez VMT, Lima</p>
+                        <p><i>📞</i> 924 113 604 / 01 7550935</p>
+                        <p><i>✉️</i> veterinarianundocan@hotmail.com</p>
+                    </div>
+                    
+                    <div class="hours">
+                        <h4>Horario de atención:</h4>
+                        <p>Lunes a Sábado: 9:30 am - 8 pm</p>
+                        <p>Domingos y feriados: 9 am - 2 pm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Resolvemos las dudas más comunes sobre nuestros servicios</p>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>¿Qué métodos de pago aceptan?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Aceptamos efectivo, transferencias bancarias y tarjetas de débito y crédito.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>¿Necesito agendar cita para el spa canino?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Sí, recomendamos agendar cita con al menos 24 horas de anticipación para garantizar disponibilidad.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>¿Atienden emergencias las 24 horas?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Actualmente atendemos dentro de nuestro horario regular. Para emergencias fuera de horario, recomendamos contactarnos vía WhatsApp para orientación.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <h2>MundoCan</h2>
+                    </div>
+                    <p>Veterinaria fundada en 2010 con el fin de ofrecer un servicio de calidad con ética y responsabilidad en todas nuestras áreas.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Enlaces rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#promociones">Promociones</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contacto</h3>
+                    <p>📞 924 113 604 / 01 7550935</p>
+                    <p>✉️ veterinarianundocan@hotmail.com</p>
+                    <p>📍 Av. Lima 1136 paradero 6 1/2 José Gálvez VMT, Lima</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><span>FB</span></a>
+                        <a href="#"><span>IG</span></a>
+                        <a href="#"><span>WA</span></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Veterinaria MundoCan - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('active');
+                
+                // Change the plus/minus sign
+                const sign = header.querySelector('span:last-child');
+                sign.textContent = content.classList.contains('active') ? '-' : '+';
+            });
+        });
+    </script>
+</body>
+</html>
